@@ -1,10 +1,9 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navber = () => {
     const navLink = <>
-        <li><Link className='uppercase'>Home</Link></li>
-        <li><Link className='uppercase'>CONTACT us</Link></li>
+        <li><Link className='uppercase' to="/">Home</Link></li>
+        <li><Link className='uppercase' to="/menu">Menu</Link></li>
         <li><Link className='uppercase'>DASHBOARD</Link></li>
         <li><Link className='uppercase'>Our Menu</Link></li>
         <li><Link className='uppercase'>Our Shop</Link></li>
