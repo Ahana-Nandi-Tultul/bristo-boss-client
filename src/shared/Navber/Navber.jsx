@@ -4,8 +4,8 @@ const Navber = () => {
     const navLink = <>
         <li><Link className='uppercase' to="/">Home</Link></li>
         <li><Link className='uppercase' to="/menu">Menu</Link></li>
-        <li><Link className='uppercase'>DASHBOARD</Link></li>
-        <li><Link className='uppercase'>Our Menu</Link></li>
+        <li><Link className='uppercase' to="/order/salad">Order Food</Link></li>
+        <li><Link className='uppercase' to="/login">Login</Link></li>
         <li><Link className='uppercase'>Our Shop</Link></li>
     </>
     return (
