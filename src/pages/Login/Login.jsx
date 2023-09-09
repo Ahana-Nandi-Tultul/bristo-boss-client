@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import {loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from "react-simple-captcha";
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true)
@@ -85,6 +86,7 @@ const Login = () => {
                     </div>
                     <p><small>New Here? <Link to="/signup" className="text-primary">Create an Account</Link></small></p>
                 </form>
+                <SocialLogin></SocialLogin>
                 </div>
             </div>
             </div>

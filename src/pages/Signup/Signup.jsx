@@ -1,32 +1,58 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProviders";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Signup = () => {
     const {createUser, updateUserInfo} = useContext(AuthContext)
     const { register, handleSubmit,  formState: { errors } } = useForm();
+    const location = useLocation();
     const navigate = useNavigate();
+    const from = location?.state?.from?.pathname || '/';
+
     const onSubmit = data => {
         console.log(data)
         createUser(data.email, data.password)
         .then(result => {
-            // const loggedUser = result.user;
+            const loggedUser = result.user;
+            console.log(loggedUser);
             updateUserInfo(data.name, data.photoURL)
             .then(() => {})
             .catch(error => console.log(error))
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'You have created your account successfully.',
-                showConfirmButton: false,
-                timer: 1500
-              })
-            // console.log(loggedUser);
-            navigate('/');
+
+            fetch('http://localhost:3000/users', {
+                method: "POST",
+                headers: {
+                    "content-type" : "application/json"
+                },
+                body: JSON.stringify({name: data.name ,email : data.email})
+            })
+            .then(res => res.json())
+            .then((data) => {
+                if(data.insertedId){
+                    console.log(data)
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'You have created your account successfully.',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+            })
+
+            navigate(from, {replace: true});
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            Swal.fire({
+                title: 'Error!',
+                text: `${error.message}`,
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
+        })
     };
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -84,6 +110,7 @@ const Signup = () => {
                 </div>
                 <p><small>Already Have an Account? Please <Link to="/login" className="text-primary">Login</Link></small></p>
             </form>
+            <SocialLogin></SocialLogin>
             </div>
         </div>
         </div>
