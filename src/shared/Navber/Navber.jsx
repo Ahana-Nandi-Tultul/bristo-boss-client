@@ -10,7 +10,9 @@ const Navber = () => {
     // console.log(carts)
     const handleLogout = () => {
         logout()
-        .then(() => {})
+        .then(() => {
+            localStorage.removeItem('access-token-Bristo');
+        })
         .catch(error => console.log(error))
     }
     const navLink = <>
