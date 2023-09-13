@@ -18,9 +18,6 @@ const Signup = () => {
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser);
-            updateUserInfo(data.name, data.photoURL)
-            .then(() => {})
-            .catch(error => console.log(error))
 
             fetch('http://localhost:3000/users', {
                 method: "POST",
@@ -31,8 +28,8 @@ const Signup = () => {
             })
             .then(res => res.json())
             .then((data) => {
+                console.log(data)
                 if(data.insertedId){
-                    console.log(data)
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -40,10 +37,14 @@ const Signup = () => {
                         showConfirmButton: false,
                         timer: 1500
                       })
+                      navigate(from, {replace: true});
                 }
             })
-
-            navigate(from, {replace: true});
+            updateUserInfo(data.name, data.photoURL)
+            .then(() => {
+                
+            })
+            .catch(error => console.log(error))
         })
         .catch(error => {
             Swal.fire({

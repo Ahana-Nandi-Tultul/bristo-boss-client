@@ -81,8 +81,9 @@ const Login = () => {
                      className="input input-bordered mb-2" />
                     <LoadCanvasTemplate />
                     </div>
+                    {/* disabled={disabled} */}
                     <div className="form-control mt-6">
-                    <input type="submit" value="Login" className="btn btn-primary" disabled={disabled} />
+                    <input type="submit" value="Login" className="btn btn-primary"  />
                     </div>
                     <p><small>New Here? <Link to="/signup" className="text-primary">Create an Account</Link></small></p>
                 </form>

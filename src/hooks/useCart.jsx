@@ -3,10 +3,11 @@ import useAxiosSecure from "./useAxiosSecure";
 import useAuth from "./useAuth";
 
 const useCart = () => {
-   const {user} = useAuth();
+   const {user, loading} = useAuth();
    const [instance] = useAxiosSecure();
    const {refetch, data:carts = [] } = useQuery({
     queryKey: ['carts', user?.email],
+    enabled: !loading,
     // queryFn: async() => {
     //     const res = await fetch(`http://localhost:3000/carts?email=${user?.email}`,{
     //       headers: {
@@ -19,7 +20,7 @@ const useCart = () => {
     queryFn: async() => {
         const res = await instance(`/carts?email=${user?.email}`)
         console.log('res from axios:', res);
-        return res.data;
+        return res?.data;
         
     },
   })

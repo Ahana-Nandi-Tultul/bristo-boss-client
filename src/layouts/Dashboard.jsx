@@ -2,9 +2,11 @@ import { FaHome, FaCalendarAlt, FaShoppingCart, FaUtensils, FaBook, FaUsers } fr
 import { BiSolidMessageAltDots } from "react-icons/bi";
 import { GiWallet, GiNotebook } from "react-icons/gi";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    console.log(isAdmin);
     return (
         <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

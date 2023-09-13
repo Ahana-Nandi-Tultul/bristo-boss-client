@@ -7,6 +7,7 @@ import useCart from '../../hooks/useCart';
 const Navber = () => {
     const {user, logout} = useContext(AuthContext)
     const [carts] = useCart();
+    
     // console.log(carts)
     const handleLogout = () => {
         logout()
@@ -23,7 +24,7 @@ const Navber = () => {
         <li><Link className='uppercase' to="/dashboard/cart">
         <button className="btn btn-xs">
             <FaShoppingCart className='w-6 h-6'></FaShoppingCart>
-            <div className="badge badge-secondary">+{carts.length}</div>
+            <div className="badge badge-secondary">+{carts?.length || 0}</div>
         </button>
         </Link></li>
         

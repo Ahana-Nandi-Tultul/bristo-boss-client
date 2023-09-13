@@ -47,7 +47,7 @@ import AllUsers from "../pages/AllUsers/AllUsers";
     },
     {
       path: 'dashboard',
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
       children: [
         {
           path: 'cart',

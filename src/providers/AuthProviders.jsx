@@ -19,15 +19,15 @@ const AuthProviders = ({children}) => {
     useEffect(() => {
         const unsubscripe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            setLoading(false)
-            // console.log('Auth Provider: ', currentUser);
+            console.log('Auth Provider: ', currentUser);
             if(currentUser){
                 axios.post('http://localhost:3000/jwt', {
                     email: currentUser.email
                 })
                 .then(data => {
-                    // console.log(data)
-                    localStorage.setItem('access-token-Bristo', data.data)
+                    console.log(data)
+                    localStorage.setItem('access-token-Bristo', data.data.token)
+                    setLoading(false)
                 })
             }
             else{

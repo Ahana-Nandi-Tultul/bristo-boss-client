@@ -23,7 +23,7 @@ const SocialLogin = () => {
             })
             .then(res => res.json())
             .then((data) => {
-                    console.log(data)
+                    // console.log(data)
                     Swal.fire({
                         title: 'You have logged in.',
                         showClass: {
