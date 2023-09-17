@@ -12,6 +12,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import Dashboard from "../layouts/Dashboard";
 import MyCart from "../pages/MyCart/MyCart";
 import AllUsers from "../pages/AllUsers/AllUsers";
+import AdminRoutes from "./AdminRoutes";
 
 
   const router = createBrowserRouter ([
@@ -55,7 +56,7 @@ import AllUsers from "../pages/AllUsers/AllUsers";
         },
         {
           path: 'allUsers',
-          element: <AllUsers></AllUsers>
+          element:  <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
         }
       ]
     }
