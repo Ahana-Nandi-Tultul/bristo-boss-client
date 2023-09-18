@@ -23,7 +23,7 @@ const Dashboard = () => {
                 isAdmin ? <>
                 <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/home"><FaHome/> Admin Home</NavLink>
                 <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/addAItem"><FaUtensils/> Add Items</NavLink>
-                <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/paymentHistory"><GiWallet/> Manage Items</NavLink>
+                <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/manageItems"><GiWallet/> Manage Items</NavLink>
                 <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/cart"><FaBook/> Manage Booking</NavLink>
                 <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/myReviews"><BiSolidMessageAltDots/> Add Review</NavLink>
                 <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/allUsers"><FaUsers/> All Users</NavLink>
