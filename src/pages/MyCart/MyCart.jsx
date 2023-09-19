@@ -1,6 +1,7 @@
 import { FaTrashAlt } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
     const [carts, refetch] = useCart();
@@ -41,7 +42,7 @@ const MyCart = () => {
             <div className="flex justify-between">
                 <h2 className="text-3xl uppercase font-bold">Total orders: {carts.length}</h2>
                 <h2 className="text-3xl uppercase font-bold">total price: ${totalPrice}</h2>
-                <button className="btn bg-[#D1A054] text-white">Pay</button>
+                <Link to="/dashboard/payment"><button className="btn bg-[#D1A054] text-white">Pay</button></Link>
             </div>
             <div className="overflow-x-auto">
   <table className="table">
