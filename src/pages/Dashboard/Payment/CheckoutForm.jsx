@@ -2,8 +2,9 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import './CheckoutForm.css';
 
-const CheckoutForm = ({price}) => {
+const CheckoutForm = ({price, carts}) => {
     const {user} = useAuth();
     const stripe = useStripe();
     const elements = useElements();
@@ -19,7 +20,7 @@ const CheckoutForm = ({price}) => {
             // console.log(res?.data?.clientSecret)
             setClientSecret(res?.data?.clientSecret)
         })
-    }, [])
+    }, [price, instance])
 
     const handleSubmit = async(event) => {
         event.preventDefault();
@@ -64,6 +65,27 @@ const CheckoutForm = ({price}) => {
           if(paymentIntent.status === "succeeded"){
             setProcessing(false);
             setTransactionId(paymentIntent.id);
+
+            // save payment info to server
+            const payment = {
+              email : user?.email, 
+              transactionId: paymentIntent.id, 
+              price,
+              date: new Date(),
+              quantity : carts.length,
+              cartItems: carts.map(item => item._id),
+              menuItems : carts.map(item => item.menuItemId),
+              status: 'service pending',
+              itemNames : carts.map(item => item.name)
+            }
+
+            instance.post('/payments', payment)
+            .then(res => {
+              console.log(res?.data)
+              if(res?.data?.insertedId){
+                // display confirm
+              }
+            })
           }
           console.log('payment intent: ',paymentIntent);
         
