@@ -21,7 +21,7 @@ const Dashboard = () => {
             {/* Sidebar content here */}
             {
                 isAdmin ? <>
-                <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/home"><FaHome/> Admin Home</NavLink>
+                <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/adminhome"><FaHome/> Admin Home</NavLink>
                 <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/addAItem"><FaUtensils/> Add Items</NavLink>
                 <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/manageItems"><GiWallet/> Manage Items</NavLink>
                 <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/cart"><FaBook/> Manage Booking</NavLink>
@@ -30,7 +30,7 @@ const Dashboard = () => {
                 
                 </> : 
                 <>
-                    <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/home"><FaHome/> User Home</NavLink>
+                    <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/userhome"><FaHome/> User Home</NavLink>
                     <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/reservation"><FaCalendarAlt/> Reservation</NavLink>
                     <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/paymentHistory"><GiWallet/> Payment History</NavLink>
                     <NavLink className="uppercase flex gap-2 text-lg items-center" to="/dashboard/cart"><FaShoppingCart/> MyCart</NavLink>

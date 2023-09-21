@@ -15,11 +15,14 @@ const CheckoutForm = ({price, carts}) => {
     const [transactionId, setTransactionId] = useState('');
 
     useEffect(()=> {
+      if(price > 0 ){
         instance.post('/create-payment-intent', {price})
         .then(res => {
             // console.log(res?.data?.clientSecret)
             setClientSecret(res?.data?.clientSecret)
         })
+      }
+        
     }, [price, instance])
 
     const handleSubmit = async(event) => {
